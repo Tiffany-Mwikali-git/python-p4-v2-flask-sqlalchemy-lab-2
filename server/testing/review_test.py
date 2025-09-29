@@ -32,12 +32,12 @@ class TestReview:
             assert 'customer_id' in Review.__table__.columns
             assert 'item_id' in Review.__table__.columns
 
-            c = Customer()
-            i = Item()
+            c = Customer(name='Test Customer')
+            i = Item(name='Test Item', price=1.99)
             db.session.add_all([c, i])
             db.session.commit()
 
-            r = Review(comment='great!', customer=c, item=i)
+            r = Review(rating=5, comment='great!', customer=c, item=i)
             db.session.add(r)
             db.session.commit()
 
